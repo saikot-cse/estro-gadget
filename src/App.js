@@ -8,7 +8,7 @@ function App() {
     <Navbar>
       <Routes>
         {publicRoute.map(({path,Component}, index) => (
-          <Route key={index} path={path} Component={<Component />} />
+          <Route key={index} path={path} element={<Component />} />
         ))}
       </Routes>
     </Navbar>
