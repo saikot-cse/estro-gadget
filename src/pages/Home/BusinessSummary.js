@@ -3,7 +3,7 @@ import { FaUserAlt, FaMoneyCheckAlt } from 'react-icons/fa';
 import { ImHappy2 } from 'react-icons/im';
 export const BusinessSummary = () => {
   return (
-    <div class="stats stats-vertical lg:stats-horizontal shadow w-full">
+    <div class="stats stats-vertical lg:stats-horizontal w-full">
       <div class="stat text-center">
         <div class="stat-title"><FaUserAlt className='text-6xl text-accent block mx-auto mb-1'/></div>
         <div class="stat-value mb-1">1k+</div>
