@@ -8,6 +8,7 @@ import { Purchase } from "../pages/Purchase/Purchase";
 
 export const publicRoute = [
   { path: "/", name: "Home", Component: Home },
+  { path: "/home", name: "Home", Component: Home },
   { path: "/products", name: "Products", Component: Products },
   { path: "/purchase", name: "Purchase", Component: Purchase },
   { path: "/blogs", name: "Blogs", Component: Blogs },

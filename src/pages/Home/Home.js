@@ -1,6 +1,5 @@
 import Helmet from "react-helmet";
 import { Footer } from "../../components/Footer";
-import Loading from "../../components/Loading";
 import { Reviews } from "../../components/Reviews";
 import { AboutUS } from "./AboutUS";
 import { Banner } from "./Banner";

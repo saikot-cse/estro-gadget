@@ -1,5 +1,12 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  theme: {
+    extend: {
+      backgroundImage: {
+        login: "url('/src/assets/login.jpg')",
+      },
+    },
+  },
   daisyui: {
     themes: [
       {

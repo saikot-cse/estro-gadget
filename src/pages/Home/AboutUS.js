@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import aboutUs from "../../assets/about-us.jpg"
 export const AboutUS = () => {
   return (
-    <section class=" bg-neutral my-16 text-white">
+    <section class=" bg-neutral my-16 text-white" >
       <div class="container px-6 py-8 mx-auto">
         <div class="items-center lg:flex">
           <div class="lg:w-1/2">

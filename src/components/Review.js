@@ -1,6 +1,5 @@
-import { DynamicStar } from "react-dynamic-star";
 export const Review = ({ review }) => {
-  const { name, image, shortDesc, ratings } = review;
+  const { name, image, shortDesc } = review;
   return (
     <div className="card max-w-lg bg-neutral shadow-2xl my-16 text-white">
       <div class="avatar">
