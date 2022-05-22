@@ -1,9 +1,14 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { useProducts } from "../../hooks/useProducts";
 import { Product } from "../Products/Product";
 
 export const HomeProducts = () => {
   const [products] = useProducts();
+  const navigate = useNavigate();
+  const navigateToProducts = () => {
+    navigate("/products");
+  };
   return (
     <div className="mt-16 mx-12">
       <h1 className="text-4xl font-extrabold text-center">Get Your Drone</h1>
@@ -13,6 +18,7 @@ export const HomeProducts = () => {
           products.slice(0,6).map(product=><Product key={product._id} product={product}/>)
         }
       </div>
+      <button onClick={navigateToProducts} class="btn btn-md lg:btn-lg mx-auto block btn-primary">View All Products</button>
     </div>
   );
 };

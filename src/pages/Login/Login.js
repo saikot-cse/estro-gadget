@@ -1,5 +1,11 @@
+import Helmet from "react-helmet"
+
 export const Login = () => {
   return (
-    <div>Login</div>
+    <div>
+      <Helmet>
+        <title>Login | Estro Gadget</title>
+      </Helmet>
+    </div>
   )
 }
