@@ -1,0 +1,26 @@
+[
+  {
+    "_id":1,
+    "name":"U49WF FPV Camera Drone", 
+    "image":"https://i.ibb.co/0ZMgv4n/products-01.jpg", 
+    "shortDesc":"Force1 U49WF FPV Drone with Camera - VR Headset Compatible RTF Remote Control Flying Drone with 720p HD Drone Camera, Altitude Hold.",
+    "ratings": 3
+    
+  },
+  {
+    "_id":2,
+    "name":"Holy Stone HS440 FPV Drone", 
+    "image":"https://i.ibb.co/Jst67JQ/products-02.jpg", 
+    "shortDesc":"Holy Stone HS440 Foldable FPV Drone with 1080P WiFi Camera for Adults and Kids; Voice and Gesture Control RC Quadcopter with 2 Batteries.",
+    "ratings": 2
+    
+  },
+  {
+    "_id":3,
+    "name":"DJI Mavic Air 2", 
+    "image":"https://i.ibb.co/fvwwqnH/products-03.jpg", 
+    "shortDesc":"Mavic Air 2 takes power and portability to the next level. As low as $73/mo for 12 months. Rates from 10–30% APR. 10km Video Transmission.",
+    "ratings": 1.5
+    
+  }
+]

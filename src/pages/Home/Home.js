@@ -1,18 +1,20 @@
+import { Footer } from "../../components/Footer";
+import { Reviews } from "../../components/Reviews";
+import { AboutUS } from "./AboutUS";
 import { Banner } from "./Banner";
 import { BusinessSummary } from "./BusinessSummary";
-import { Footer } from "../../components/Footer";
-import { Reviews } from "./Reviews";
-import { ExtraInfo } from "./ExtraInfo";
 import { HomeProducts } from "./HomeProducts";
+import { JoinUs } from "./JoinUs";
 export const Home = () => {
   return (
     <div>
       <Banner />
-      <HomeProducts/>
-      <BusinessSummary/>
-      <ExtraInfo/>
-      <Reviews/>
-      <Footer/>
+      <AboutUS />
+      <HomeProducts />
+      <BusinessSummary />
+      <Reviews />
+      <JoinUs />
+      <Footer />
     </div>
   );
 };
