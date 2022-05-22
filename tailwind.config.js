@@ -4,9 +4,9 @@ module.exports = {
     themes: [
       {
         corporate: {
-          primary: "#3D4451",
+          primary: "#0ea5e9",
           secondary: "#004466",
-          accent: "#0ea5e9",
+          accent: "#3D4451",
           neutral: "#1F2937",
           "base-100": "#FFFFFF",
           info: "#3ABFF8",
@@ -21,7 +21,7 @@ module.exports = {
           secondary: "#0ea5e9",
           accent: "#bef264",
           neutral: "#4b5563",
-          "base-100": "#1F2937",
+          "base-100": "#111827",
           info: "#4b5563",
           success: "#1BBB70",
           warning: "#F59E0B",
