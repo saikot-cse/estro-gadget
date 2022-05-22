@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
+import fetcher from "../api/privateAxios";
 
 export const useProducts = () => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    fetch("products.json")
-      .then((res) => res.json())
-      .then((data) => setProducts(data));
+    (async () => {
+      const res = await fetcher.get("/products");
+      setProducts(res.data);
+    })();
   }, []);
   return[products,setProducts];
 };

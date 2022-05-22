@@ -11,7 +11,7 @@ export const SignUp = () => {
         <title>Sign Up | Estro Gadget</title>
       </Helmet>
 
-      <div class="bg-base-100">
+      <div class="bg-base-100 mt-16">
         <div class="flex justify-center h-screen">
           <div class="flex items-center w-full max-w-md px-6 mx-auto lg:w-2/6">
             <div class="flex-1">
@@ -23,6 +23,12 @@ export const SignUp = () => {
 
               <div class="mt-8">
                 <form>
+                  <div className="mb-5">
+                    <label for="name" class="block mb-2 text-sm ">
+                      Name
+                    </label>
+                    <input type="text" name="name" id="name" placeholder="Your Name" class="block w-full px-4 py-2 mt-2  placeholder-gray-400 border border-gray-200 rounded-md dark:placeholder-gray-600  focus:border-primary dark:focus:border-primary focus:ring-primary focus:outline-none focus:ring focus:ring-opacity-40" />
+                  </div>
                   <div>
                     <label for="email" class="block mb-2 text-sm ">
                       Email Address

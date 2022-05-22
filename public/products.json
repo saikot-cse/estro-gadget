@@ -1,6 +1,5 @@
 [
   {
-    "_id":1,
     "name":"U49WF FPV Camera Drone", 
     "image":"https://i.ibb.co/0ZMgv4n/products-01.jpg", 
     "shortDesc":"Force1 U49WF FPV Drone with Camera - VR Headset Compatible RTF Remote Control Flying Drone with 720p HD Drone Camera, Altitude Hold.",
@@ -9,7 +8,6 @@
     "price": 49
   },
   {
-    "_id":2,
     "name":"Holy Stone HS440 FPV Drone", 
     "image":"https://i.ibb.co/Jst67JQ/products-02.jpg", 
     "shortDesc":"Holy Stone HS440 Foldable FPV Drone with 1080P WiFi Camera for Adults and Kids; Voice and Gesture Control RC Quadcopter with 2 Batteries.",
@@ -18,7 +16,6 @@
     "price": 49
   },
   {
-    "_id":3,
     "name":"DJI Mavic Air 2", 
     "image":"https://i.ibb.co/fvwwqnH/products-03.jpg", 
     "shortDesc":"Mavic Air 2 takes power and portability to the next level. As low as $73/mo for 12 months. Rates from 10–30% APR. 10km Video Transmission.",
@@ -27,7 +24,6 @@
     "price": 49
   },
   {
-    "_id":4,
     "name":"Skydio 2 +", 
     "image":"https://i.ibb.co/R7xpJY0/products-04.jpg", 
     "shortDesc":"Designed to be your personal film crew, Skydio 2+ comes with unmatched autonomous subject tracking and 360 obstacle avoidance.",
@@ -36,7 +32,6 @@
     "price": 49
   },
   {
-    "_id":5,
     "name":"DJI FPV Drone", 
     "image":"https://i.ibb.co/2jy96ft/products-05.jpg", 
     "shortDesc":"DJI FPV Combo - First-Person View Drone UAV Quadcopter. As low as $186/mo. Rates from 10–30% APR. 15km Max Transmission Range",
@@ -45,7 +40,6 @@
     "price": 49
   },
   {
-    "_id":6,
     "name":"Affiliate Woo Ninja", 
     "image":"https://i.ibb.co/7Wmm8sL/products-06.jpg", 
     "shortDesc":"Force1 U49WF FPV Drone with Camera - VR Headset Compatible, 1 CMOS Sensor, 3-Axis Gimbal White. Video capture resolution: 4K UHD 2160p ",
@@ -54,7 +48,6 @@
     "price": 49
   },
   {
-    "_id":7,
     "name":"Autel EVO II Series", 
     "image":"https://i.ibb.co/VHPQwBT/products-07.jpg", 
     "shortDesc":"Autel Robotics EVO II 8K Drone Camera, Portable Folding Aircraft. As low as $452/mo for 12 months. Rates from 10–30% APR. Apple ProRes 422 HQ.",
@@ -63,7 +56,6 @@
     "price": 49
   },
   {
-    "_id":8,
     "name":"DJI Mavic 3", 
     "image":"https://i.ibb.co/n1tKFxs/products-08.jpg", 
     "shortDesc":"Capture stunning imagery with a legendary Hasselblad camera. The perfect balance of power and portability, the Lite+ can stay in the air for 40 minutes",
@@ -72,7 +64,6 @@
     "price": 49
   },
   {
-    "_id":9,
     "name":"DJI Mini 3 Pro", 
     "image":"https://i.ibb.co/7r3sBKh/products-09.jpg", 
     "shortDesc":"DJI Phantom 4 Pro V2.0 - Drone Quadcopter UAV with 20MP Camera. Due to limited new product availability, each customer can only purchase 3 units",
