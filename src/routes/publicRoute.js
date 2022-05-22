@@ -5,6 +5,7 @@ import { Login } from "../pages/Login/Login";
 import { NotFound } from "../pages/NotFound/NotFound";
 import { Products } from "../pages/Products/Products";
 import { Purchase } from "../pages/Purchase/Purchase";
+import { SignUp } from "../pages/SignUp/SignUp";
 
 export const publicRoute = [
   { path: "/", name: "Home", Component: Home },
@@ -14,5 +15,6 @@ export const publicRoute = [
   { path: "/blogs", name: "Blogs", Component: Blogs },
   { path: "/about", name: "About", Component: About },
   { path: "/login", name: "Login", Component: Login },
+  { path: "/signup", name: "SignUp", Component: SignUp },
   { path: "*", name: "NotFound", Component: NotFound },
 ];

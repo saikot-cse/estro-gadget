@@ -1,35 +1,24 @@
 import Helmet from "react-helmet";
 import { NavLink, useNavigate } from "react-router-dom";
-
-export const Login = () => {
+export const SignUp = () => {
   const navigate = useNavigate();
-  const navigateToSignUp = () => {
-    navigate("/signup");
+  const navigateToLogin = () => {
+    navigate("/login");
   };
   return (
     <div>
       <Helmet>
-        <title>Login | Estro Gadget</title>
+        <title>Sign Up | Estro Gadget</title>
       </Helmet>
 
       <div class="bg-base-100">
         <div class="flex justify-center h-screen">
-          <div class="hidden bg-cover lg:block lg:w-2/3 bg-login">
-            <div class="flex items-center h-full px-20 bg-gray-900 bg-opacity-40">
-              <div>
-                <h2 class="text-6xl font-bold text-white" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="200">Estro Gadget</h2>
-
-                <p class="max-w-xl mt-3 text-white text-2xl" data-aos="fade-right" data-aos-delay="400" data-aos-duration="900">Drone is a self-service Continuous Integration platform for busy development teams.</p>
-              </div>
-            </div>
-          </div>
-
           <div class="flex items-center w-full max-w-md px-6 mx-auto lg:w-2/6">
             <div class="flex-1">
               <div class="text-center">
-                <h2 class="text-4xl font-bold text-center">Login</h2>
+                <h2 class="text-4xl font-bold text-center">Sign Up</h2>
 
-                <p class="mt-3">Sign in to access your account</p>
+                <p class="mt-3">Sign Up to create your account</p>
               </div>
 
               <div class="mt-8">
@@ -38,7 +27,7 @@ export const Login = () => {
                     <label for="email" class="block mb-2 text-sm ">
                       Email Address
                     </label>
-                    <input type="email" name="email" id="email" placeholder="example@example.com" class="block w-full px-4 py-2 mt-2  placeholder-gray-400 border border-gray-200 rounded-md dark:placeholder-gray-600  focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                    <input type="email" name="email" id="email" placeholder="example@example.com" class="block w-full px-4 py-2 mt-2  placeholder-gray-400 border border-gray-200 rounded-md dark:placeholder-gray-600  focus:border-primary dark:focus:border-primary focus:ring-primary focus:outline-none focus:ring focus:ring-opacity-40" />
                   </div>
 
                   <div class="mt-6">
@@ -46,23 +35,23 @@ export const Login = () => {
                       <label for="password" class="text-sm ">
                         Password
                       </label>
-                      <NavLink to="#" class="text-sm text-primary focus:text-blue-500 hover:text-blue-500 hover:underline">
+                      <NavLink to="#" class="text-sm text-primary focus:text-info hover:text-info hover:underline">
                         Forgot password?
                       </NavLink>
                     </div>
 
-                    <input type="password" name="password" id="password" placeholder="Your Password" class="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 border border-gray-200 rounded-md dark:placeholder-gray-600  dark:text-gray-300  focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                    <input type="password" name="password" id="password" placeholder="Your Password" class="block w-full px-4 py-2 mt-2 placeholder-gray-400 border border-gray-200 rounded-md dark:placeholder-gray-600  focus:border-primary dark:focus:border-primary focus:ring-primary focus:outline-none focus:ring focus:ring-opacity-40" />
                   </div>
 
                   <div class="mt-6">
-                    <button class="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-primary rounded-md hover:bg-info focus:outline-none  focus:ring focus:ring-blue-300 focus:ring-opacity-50">Sign in</button>
+                    <button class="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-primary rounded-md hover:bg-info focus:outline-none  focus:ring focus:ring-primary focus:ring-opacity-50">Sign Up</button>
                   </div>
                 </form>
 
                 <p class="mt-6 text-sm text-center ">
-                  Don&#x27;t have an account yet?
-                  <button onClick={navigateToSignUp} to="#" class="text-primary focus:outline-none focus:underline hover:underline">
-                    Sign up
+                  Already have an account?
+                  <button onClick={navigateToLogin} to="#" class="text-primary focus:outline-none focus:underline hover:underline focus:text-info">
+                    Login
                   </button>
                   <div class="divider">OR</div>
                   <NavLink to="#" class="flex items-center justify-center mt-4 transition-colors duration-200 transform  rounded-lghover:bg-gray-600 dark:hover:bg-gray-600">
@@ -73,12 +62,19 @@ export const Login = () => {
                         <path d="M20 36.6667C24.305 36.6667 28.2167 35.0192 31.1742 32.34L26.0159 27.975C24.3425 29.2425 22.2625 30 20 30C15.665 30 11.9842 27.2359 10.5975 23.3784L5.16254 27.5659C7.92087 32.9634 13.5225 36.6667 20 36.6667Z" fill="#4CAF50" />
                         <path d="M36.3425 16.7358H35V16.6667H20V23.3333H29.4192C28.7592 25.1975 27.56 26.805 26.0133 27.9758C26.0142 27.975 26.015 27.975 26.0158 27.9742L31.1742 32.3392C30.8092 32.6708 36.6667 28.3333 36.6667 20C36.6667 18.8825 36.5517 17.7917 36.3425 16.7358Z" fill="#1976D2" />
                       </svg>
-                      <span class="px-4 py-3 font-bold text-center">Sign in with Google</span>
+                      <span class="px-4 py-3 font-bold text-center">Continue with Google</span>
                     </div>
-
-                    
                   </NavLink>
                 </p>
+              </div>
+            </div>
+          </div>
+          <div class="hidden bg-cover lg:block lg:w-2/3 bg-signup">
+            <div class="flex items-center h-full px-20 bg-gray-900 bg-opacity-40">
+              <div>
+                <h2 class="text-6xl font-bold text-white" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="200">Estro Gadget</h2>
+
+                <p class="max-w-xl mt-3 text-white text-2xl" data-aos="fade-right" data-aos-delay="400" data-aos-duration="900">Drone is a self-service Continuous Integration platform for busy development teams.</p>
               </div>
             </div>
           </div>

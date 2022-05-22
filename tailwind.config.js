@@ -4,6 +4,8 @@ module.exports = {
     extend: {
       backgroundImage: {
         login: "url('/src/assets/login.jpg')",
+        signup: "url('/src/assets/signup.jpg')",
+        join: "url('/src/assets/join.jpg')",
       },
     },
   },
