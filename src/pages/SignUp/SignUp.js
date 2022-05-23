@@ -1,27 +1,43 @@
-import { useEffect } from "react";
-import { useSignInWithGoogle } from "react-firebase-hooks/auth";
+import { useCreateUserWithEmailAndPassword, useSendEmailVerification, useSignInWithGoogle, useUpdateProfile } from "react-firebase-hooks/auth";
 import Helmet from "react-helmet";
+import { useForm } from "react-hook-form";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import Loading from "../../components/Loading";
 import auth from "../../firebase.init";
 export const SignUp = () => {
-  const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+  const navigate = useNavigate();
+  const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
-  const navigate = useNavigate();
-  const navigateToLogin = () => {
-    navigate("/login");
+  const onSubmit = async (data) => {
+    await createUserWithEmailAndPassword(data.email, data.password);
+    await sendEmailVerification();
+    await updateProfile({ displayName: data.name });
+    navigate(from, { replace: true })
   };
-  const handleSignUp=()=>{
-    signInWithGoogle();
+  const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
+  const [createUserWithEmailAndPassword, user, loading, error] = useCreateUserWithEmailAndPassword(auth);
+  const [sendEmailVerification, sending, varificationError] = useSendEmailVerification(auth);
+  
+  
+  // const [token] = useTokens(googleUser || user)
+  let signUpError;
+  if (googleError || error || updateError || varificationError) {
+    signUpError = <p className="text-red-600">Error: {error?.message || googleError?.message || updateError?.message || varificationError?.message}</p>;
   }
-  useEffect(() => {
-    if (user) {
-      navigate(from, { replace: true });
-    }
-  }, [user,navigate,from]);
-  if(loading){
-    return <Loading/>
+
+  // useEffect(() => {
+  //   if (token) {
+  //     navigate(from, { replace: true });
+  //   }
+  // }, [token, navigate, from]);
+  if (googleLoading || loading || updating || sending) {
+    return <Loading />;
   }
   return (
     <div>
@@ -40,18 +56,54 @@ export const SignUp = () => {
               </div>
 
               <div className="mt-8">
-                <form>
+                <form onSubmit={handleSubmit(onSubmit)}>
                   <div className="mb-5">
                     <label htmlFor="name" className="block mb-2 text-sm ">
                       Name
                     </label>
-                    <input type="text" name="name" id="name" placeholder="Your Name" className="block w-full px-4 py-2 mt-2  placeholder-gray-400 border border-gray-200 rounded-md dark:placeholder-gray-600  focus:border-primary dark:focus:border-primary focus:ring-primary focus:outline-none focus:ring focus:ring-opacity-40" />
+                    <input
+                      {...register("name", {
+                        required: {
+                          value: true,
+                          message: "Name is required",
+                        },
+                        pattern: {
+                          value: /[A-Za-z]{1,32}/,
+                          message: "Please enter valid name",
+                        },
+                      })}
+                      type="text"
+                      placeholder="Enter your name"
+                      className="input input-bordered w-full max-w-md"
+                    />
+                    <label className="label">
+                      {errors.name?.type === "required" && <span className="label-text-alt text-red-600">{errors.name.message}</span>}
+                      {errors.name?.type === "pattern" && <span className="label-text-alt text-red-600">{errors.name.message}</span>}
+                    </label>
                   </div>
                   <div>
                     <label htmlFor="email" className="block mb-2 text-sm ">
                       Email Address
                     </label>
-                    <input type="email" name="email" id="email" placeholder="example@example.com" className="block w-full px-4 py-2 mt-2  placeholder-gray-400 border border-gray-200 rounded-md dark:placeholder-gray-600  focus:border-primary dark:focus:border-primary focus:ring-primary focus:outline-none focus:ring focus:ring-opacity-40" />
+                    <input
+                      {...register("email", {
+                        required: {
+                          value: true,
+                          message: "Email is required",
+                        },
+                        pattern: {
+                          value: /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
+                          message: "Please enter valid email",
+                        },
+                      })}
+                      type="email"
+                      placeholder="Enter your email"
+                      className="input input-bordered w-full max-w-md"
+                    />
+                    <label className="label">
+                      {errors.email?.type === "required" && <span className="label-text-alt text-red-600">{errors.email.message}</span>}
+                      {errors.email?.type === "pattern" && <span className="label-text-alt text-red-600">{errors.email.message}</span>}
+                    </label>
                   </div>
 
                   <div className="mt-6">
@@ -64,21 +116,44 @@ export const SignUp = () => {
                       </NavLink>
                     </div>
 
-                    <input type="password" name="password" id="password" placeholder="Your Password" className="block w-full px-4 py-2 mt-2 placeholder-gray-400 border border-gray-200 rounded-md dark:placeholder-gray-600  focus:border-primary dark:focus:border-primary focus:ring-primary focus:outline-none focus:ring focus:ring-opacity-40" />
+                    <input
+                      {...register("password", {
+                        required: {
+                          value: true,
+                          message: "Password is required",
+                        },
+                        minLength: {
+                          value: 6,
+                          message: "Password must be minimum 6 characters",
+                        },
+                      })}
+                      type="password"
+                      placeholder="Enter your password"
+                      className="input input-bordered w-full max-w-md"
+                    />
+                    <label className="label">
+                      {errors.password?.type === "required" && <span className="label-text-alt text-red-600">{errors.password.message}</span>}
+                      {errors.password?.type === "minLength" && <span className="label-text-alt text-red-600">{errors.password.message}</span>}
+                    </label>
                   </div>
 
-                  <div className="mt-6">
-                    <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-primary rounded-md hover:bg-info focus:outline-none  focus:ring focus:ring-primary focus:ring-opacity-50">Sign Up</button>
-                  </div>
+                  {signUpError}
+                  <input className="btn text-primary text-dark w-full max-w-sm" type="submit" value="Sign Up" />
                 </form>
 
                 <p className="mt-6 text-sm text-center ">
                   Already have an account?
-                  <button onClick={navigateToLogin} to="#" className="text-primary focus:outline-none focus:underline hover:underline focus:text-info">
+                  <NavLink to="/login" className="text-primary focus:outline-none focus:underline hover:underline focus:text-info">
                     Login
-                  </button>
+                  </NavLink>
                   <div className="divider">OR</div>
-                  <button onClick={handleSignUp} className="flex items-center mx-auto justify-center mt-4 transition-colors duration-200 transform  rounded-lghover:bg-gray-600 dark:hover:bg-gray-600">
+                  <button
+                    onClick={() => {
+                      signInWithGoogle();
+                      navigate("/")
+                    }}
+                    className="flex items-center mx-auto justify-center mt-4 transition-colors duration-200 transform  rounded-lghover:bg-gray-600 dark:hover:bg-gray-600"
+                  >
                     <div className="px-4 py-2  flex justify-center items-center border border-neutral">
                       <svg className="w-6 h-6 " viewBox="0 0 40 40">
                         <path d="M36.3425 16.7358H35V16.6667H20V23.3333H29.4192C28.045 27.2142 24.3525 30 20 30C14.4775 30 10 25.5225 10 20C10 14.4775 14.4775 9.99999 20 9.99999C22.5492 9.99999 24.8683 10.9617 26.6342 12.5325L31.3483 7.81833C28.3717 5.04416 24.39 3.33333 20 3.33333C10.7958 3.33333 3.33335 10.7958 3.33335 20C3.33335 29.2042 10.7958 36.6667 20 36.6667C29.2042 36.6667 36.6667 29.2042 36.6667 20C36.6667 18.8825 36.5517 17.7917 36.3425 16.7358Z" fill="#FFC107" />

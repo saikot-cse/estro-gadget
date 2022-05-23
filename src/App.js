@@ -10,6 +10,7 @@ import { AddService } from "./pages/Dashboard/AddService";
 import { Dashboard } from "./pages/Dashboard/Dashboard";
 import { privateRoutes } from "./routes/privateRoutes";
 import { publicRoute } from "./routes/publicRoute";
+
 function App() {
   useEffect(() => {
     AOS.init();

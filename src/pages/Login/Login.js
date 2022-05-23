@@ -1,14 +1,29 @@
+import { signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useEffect } from "react";
-import { useSignInWithGoogle } from "react-firebase-hooks/auth";
+import { useSignInWithEmailAndPassword, useSignInWithGoogle } from "react-firebase-hooks/auth";
 import Helmet from "react-helmet";
+import { useForm } from "react-hook-form";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import Loading from "../../components/Loading";
 import auth from "../../firebase.init";
 export const Login = () => {
-  const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+  const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
+  const [signInWithEmailAndPassword, user, loading, error] = useSignInWithEmailAndPassword(auth);
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
+  const onSubmit = async (data) => {
+    await signInWithEmailAndPassword(data.email, data.password);
+    await updateProfile({ displayName: data.name });
+    // toast("Login Successfull")
+  };
+  
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
   const navigate = useNavigate();
+  let signInError;
   const navigateToSignUp = () => {
     navigate("/signup");
   };
@@ -19,9 +34,9 @@ export const Login = () => {
     if (user) {
       navigate(from, { replace: true });
     }
-  }, [user,navigate,from]);
-  if(loading){
-    return <Loading/>
+  }, [user, navigate, from]);
+  if (googleLoading || loading) {
+    return <Loading />;
   }
   return (
     <div>
@@ -29,7 +44,7 @@ export const Login = () => {
         <title>Login | Estro Gadget</title>
       </Helmet>
 
-      <div className="bg-base-100">
+      <div className="bg-base-100 mt-16">
         <div className="flex justify-center h-screen">
           <div className="hidden bg-cover lg:block lg:w-2/3 bg-login">
             <div className="flex items-center h-full px-20 bg-gray-900 bg-opacity-40">
@@ -54,12 +69,30 @@ export const Login = () => {
               </div>
 
               <div className="mt-8">
-                <form>
+                <form onSubmit={handleSubmit(onSubmit)}>
                   <div>
                     <label htmlFor="email" className="block mb-2 text-sm ">
                       Email Address
                     </label>
-                    <input type="email" name="email" id="email" placeholder="example@example.com" className="block w-full px-4 py-2 mt-2  placeholder-gray-400 border border-gray-200 rounded-md dark:placeholder-gray-600  focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                    <input
+                      {...register("email", {
+                        required: {
+                          value: true,
+                          message: "Email is required",
+                        },
+                        pattern: {
+                          value: /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
+                          message: "Please enter valid email",
+                        },
+                      })}
+                      type="email"
+                      placeholder="Enter your email"
+                      className="input input-bordered w-full max-w-md"
+                    />
+                    <label className="label">
+                      {errors.email?.type === "required" && <span className="label-text-alt text-red-600">{errors.email.message}</span>}
+                      {errors.email?.type === "pattern" && <span className="label-text-alt text-red-600">{errors.email.message}</span>}
+                    </label>
                   </div>
 
                   <div className="mt-6">
@@ -72,12 +105,28 @@ export const Login = () => {
                       </NavLink>
                     </div>
 
-                    <input type="password" name="password" id="password" placeholder="Your Password" className="block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 border border-gray-200 rounded-md dark:placeholder-gray-600  dark:text-gray-300  focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+                    <input
+                      {...register("password", {
+                        required: {
+                          value: true,
+                          message: "Password is required",
+                        },
+                        minLength: {
+                          value: 6,
+                          message: "Password must be minimum 6 characters",
+                        },
+                      })}
+                      type="password"
+                      placeholder="Enter your password"
+                      className="input input-bordered w-full max-w-md"
+                    />
+                    <label className="label">
+                      {errors.password?.type === "required" && <span className="label-text-alt text-red-600">{errors.password.message}</span>}
+                      {errors.password?.type === "minLength" && <span className="label-text-alt text-red-600">{errors.password.message}</span>}
+                    </label>
                   </div>
-
-                  <div className="mt-6">
-                    <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-primary rounded-md hover:bg-info focus:outline-none  focus:ring focus:ring-blue-300 focus:ring-opacity-50">Sign in</button>
-                  </div>
+                  {signInError}
+                  <input className="btn btn-primary text-dark w-full max-w-sm mt-3" type="submit" value="Login" />
                 </form>
 
                 <div className="mt-6 text-sm text-center ">
