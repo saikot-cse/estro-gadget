@@ -7,10 +7,10 @@ export const Banner = () => {
           <h1 className="text-5xl lg:text-6xl font-bold" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="200">
             We Can Make Your Celebration Marvelous
           </h1>
-          <p data-aos="fade-right" data-aos-delay="400" data-aos-duration="900" className="text-5xl font-bold" className="py-6 max-w-5xl">
+          <p data-aos="fade-right" data-aos-delay="400" data-aos-duration="900" className="py-6 max-w-5xl">
             While they might seem like toys, a high-quality drone is a serious investment. We’ve flown plenty and there are a lot of good performers that we use.
           </p>
-          <button data-aos="zoom-in" data-aos-delay="1300" className="btn btn-primary" className="btn btn-primary">
+          <button data-aos="zoom-in" data-aos-delay="1300" className="btn btn-primary">
             Get Started
           </button>
         </div>

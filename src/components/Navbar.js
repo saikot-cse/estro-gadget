@@ -21,9 +21,6 @@ export const Navbar = ({ children }) => {
         <NavLink to="/products">Products</NavLink>
       </li>
       <li>
-        <NavLink to="/purchase">Purchase</NavLink>
-      </li>
-      <li>
         <NavLink to="/blogs">Blogs</NavLink>
       </li>
       <li>
