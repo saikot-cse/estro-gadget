@@ -13,10 +13,25 @@ export const DashboardSideBar = ({ children }) => {
         <ul className="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content ">
           {/* <!-- Sidebar content here --> */}
           <li className="mb-3">
-            <NavLink to="/dashboard/add-service">Add Service</NavLink>
+            <NavLink to="/dashboard/add-products">Add Products</NavLink>
           </li>
-          <li>
-            <NavLink to="/dashboard/add-admin">Add Admin</NavLink>
+          <li className="mb-3">
+            <NavLink to="/dashboard/add-admin">Make Admin</NavLink>
+          </li>
+          <li className="mb-3">
+            <NavLink to="/dashboard/manage-orders">Manage All Orders</NavLink>
+          </li>
+          <li className="mb-3">
+            <NavLink to="/dashboard/manage-products">Manage Products</NavLink>
+          </li>
+          <li className="mb-3">
+            <NavLink to="/dashboard/my-orders">My Orders</NavLink>
+          </li>
+          <li className="mb-3">
+            <NavLink to="/dashboard/add-review">Add Review</NavLink>
+          </li>
+          <li className="mb-3">
+            <NavLink to="/dashboard/my-profile">My Profile</NavLink>
           </li>
         </ul>
       </div>

@@ -5,9 +5,14 @@ import { Route, Routes } from "react-router-dom";
 import { RequireAdmin } from "./Authentication/RequireAdmin";
 import { RequireAuth } from "./Authentication/RequireAuth";
 import { Navbar } from "./components/Navbar";
-import { AddAdmin } from "./pages/Dashboard/AddAdmin";
-import { AddService } from "./pages/Dashboard/AddService";
+import { AddProducts } from "./pages/Dashboard/AddProducts";
+import { AddReview } from "./pages/Dashboard/AddReview";
 import { Dashboard } from "./pages/Dashboard/Dashboard";
+import { MakeAdmin } from "./pages/Dashboard/MakeAdmin";
+import { ManageOrders } from "./pages/Dashboard/ManageOrders";
+import { ManageProducts } from "./pages/Dashboard/ManageProducts";
+import { MyOrders } from "./pages/Dashboard/MyOrders";
+import { MyProfile } from "./pages/Dashboard/MyProfile";
 import { privateRoutes } from "./routes/privateRoutes";
 import { publicRoute } from "./routes/publicRoute";
 
@@ -27,13 +32,17 @@ function App() {
               <Route key={index} path={path} element={<Component />} />
             ))}
           </Route>
-          <Route element={<RequireAdmin/>}>
-              <Route path="/dashboard" element={<Dashboard/>}>
-                <Route path="add-service" element={<AddService/>}/>
-                <Route path="add-admin" element={<AddAdmin/>}/>
-              </Route>
+          <Route element={<RequireAdmin />}>
+            <Route path="/dashboard" element={<Dashboard />}>
+              <Route path="add-products" element={<AddProducts />} />
+              <Route path="add-admin" element={<MakeAdmin />} />
+              <Route path="manage-orders" element={<ManageOrders />} />
+              <Route path="manage-products" element={<ManageProducts />} />
+              <Route path="add-review" element={<AddReview />} />
+              <Route path="my-orders" element={<MyOrders/>} />
+              <Route path="my-profile" element={<MyProfile />} />
+            </Route>
           </Route>
-  
         </Routes>
       </Navbar>
     </div>

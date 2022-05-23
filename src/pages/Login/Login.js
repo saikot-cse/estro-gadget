@@ -1,12 +1,14 @@
-import { signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useEffect } from "react";
-import { useSignInWithEmailAndPassword, useSignInWithGoogle } from "react-firebase-hooks/auth";
+import { useSignInWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from "react-firebase-hooks/auth";
 import Helmet from "react-helmet";
 import { useForm } from "react-hook-form";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import Loading from "../../components/Loading";
 import auth from "../../firebase.init";
+import { useTokens } from "../../hooks/useTokens";
 export const Login = () => {
+  const [updateProfile, updating, updateError] = useUpdateProfile(auth);
   const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
   const [signInWithEmailAndPassword, user, loading, error] = useSignInWithEmailAndPassword(auth);
   const {
@@ -17,9 +19,8 @@ export const Login = () => {
   const onSubmit = async (data) => {
     await signInWithEmailAndPassword(data.email, data.password);
     await updateProfile({ displayName: data.name });
-    // toast("Login Successfull")
   };
-  
+
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
   const navigate = useNavigate();
@@ -27,15 +28,26 @@ export const Login = () => {
   const navigateToSignUp = () => {
     navigate("/signup");
   };
+  const [token] = useTokens(user || googleUser);
   const handleLogin = () => {
     signInWithGoogle();
   };
+  if (googleError || error || updateError) {
+    signInError = <p className="text-red-600">{error?.message || googleError?.message || updateError?.message}</p>;
+  }
   useEffect(() => {
-    if (user) {
+    if (token) {
       navigate(from, { replace: true });
+      Swal.fire("Success!", "Login Successfull!", "success");
     }
-  }, [user, navigate, from]);
-  if (googleLoading || loading) {
+  }, [token, navigate, from]);
+  // useEffect(() => {
+  //   if (user) {
+      
+  //     navigate(from, { replace: true });
+  //   }
+  // }, [user, navigate, from]);
+  if (googleLoading || loading || updating) {
     return <Loading />;
   }
   return (

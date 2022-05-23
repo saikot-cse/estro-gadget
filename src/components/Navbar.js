@@ -1,17 +1,16 @@
 import { signOut } from "firebase/auth";
 import { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Navigate, NavLink } from "react-router-dom";
+import { Link, Navigate, NavLink } from "react-router-dom";
 import auth from "../firebase.init";
-import { useAdmin } from "../hooks/useAdmin";
 
 export const Navbar = ({ children }) => {
   const [user] = useAuthState(auth);
-  const [admin] = useAdmin();
   const [dark, setDark] = useState(false);
   const handleLogout = () => {
     signOut(auth);
     Navigate("/");
+    localStorage.removeItem("accessToken");
   };
   const menuItems = (
     <>
@@ -30,12 +29,22 @@ export const Navbar = ({ children }) => {
       <li>
         <NavLink to="/about">About</NavLink>
       </li>
-      {admin && (
+      {user && (
         <li>
-          <NavLink to="/dashboard/add-service">Dashboard</NavLink>
+          <NavLink to="/dashboard">Dashboard</NavLink>
         </li>
       )}
-      <li>{user ? <button onClick={handleLogout}>Logout</button> : <NavLink to="/login">Login</NavLink>}</li>
+      <li>
+        {user ? (
+          <>
+            <Link to="">{user?.displayName}</Link>
+            <button onClick={handleLogout}>Logout</button>
+
+          </>
+        ) : (
+          <NavLink to="/login">Login</NavLink>
+        )}
+      </li>
       <li>
         <label className="swap swap-rotate">
           {/* <!-- this hidden checkbox controls the state --> */}

@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
+import fetcher from "../api/privateAxios";
 
 export const useReviews = () => {
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
-    fetch("reviews.json")
-      .then((res) => res.json())
-      .then((data) => setReviews(data));
+    (async () => {
+      const res = await fetcher.get("/reviews");
+      setReviews(res.data);
+    })();
   }, []);
   return[reviews,setReviews];
 };
