@@ -5,7 +5,7 @@ export const Contact = () => {
   return (
     <div>
       <Helmet>
-        <title>About | Estro Gadget</title>
+        <title>Contact Us | Estro Gadget</title>
       </Helmet>
       <div class="hero h-[40vh] bg-about bg-fixed mt-16 opacity-90">
         <div class="hero-content text-center">
