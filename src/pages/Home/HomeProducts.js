@@ -1,8 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useProducts } from "../../hooks/useProducts";
-import { Product } from "../Products/Product";
-
+import {Product} from "../Products/Product"
 export const HomeProducts = () => {
   const [products] = useProducts();
   const navigate = useNavigate();

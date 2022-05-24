@@ -28,7 +28,7 @@ export const Navbar = ({ children }) => {
       </li>
       {user && (
         <li>
-          <NavLink to="/dashboard">Dashboard</NavLink>
+          <NavLink to="/dashboard/my-profile">Dashboard</NavLink>
         </li>
       )}
       {user && (

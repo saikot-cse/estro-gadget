@@ -1,5 +1,3 @@
-import {Purchase} from "../pages/Purchase/Purchase";
+import { Purchase } from "../pages/Purchase/Purchase";
 
-export const privateRoutes = [
-  { path: "/purchase", name: "Purchase", Component: Purchase },
-];
+export const privateRoutes = [{ path: "/purchase/:_id", name: "Purchase", Component: Purchase }];

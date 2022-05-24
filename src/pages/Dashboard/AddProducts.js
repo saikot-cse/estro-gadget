@@ -33,7 +33,7 @@ export const AddProducts = () => {
             shortDesc: data.shortDesc,
             minOrderQuantity: data.minOrderQuantity,
             availableQuantity: data.availableQuantity,
-            price: data.price
+            price: data.price,
           };
           // send to your database
           fetch("http://localhost:6060/product", {
@@ -47,19 +47,15 @@ export const AddProducts = () => {
             .then((res) => res.json())
             .then((inserted) => {
               if (inserted.insertedId) {
-                Swal.fire(
-                  'Success!',
-                  'Product Added Successfully!',
-                  'success'
-                )
+                Swal.fire("Success!", "Product Added Successfully!", "success");
                 reset();
               } else {
                 Swal.fire({
-                  icon: 'error',
-                  title: 'Oops...',
-                  text: 'Failed to add product!',
-                  footer: '<a href="">Why do I have this issue?</a>'
-                })
+                  icon: "error",
+                  title: "Oops...",
+                  text: "Failed to add product!",
+                  footer: '<a href="">Why do I have this issue?</a>',
+                });
               }
             });
         }
@@ -101,7 +97,6 @@ export const AddProducts = () => {
           <label className="label">{errors.image?.type === "required" && <span className="label-text-alt text-red-500">{errors.image.message}</span>}</label>
         </div>
         <div className="form-control w-full max-w-xs">
-      
           <input
             type="text"
             placeholder="Short Description"
@@ -116,7 +111,6 @@ export const AddProducts = () => {
           <label className="label">{errors.shortDesc?.type === "required" && <span className="label-text-alt text-red-500">{errors.shortDesc.message}</span>}</label>
         </div>
         <div className="form-control w-full max-w-xs">
-          
           <input
             type="number"
             placeholder="Minimum Order Quantity"
@@ -131,7 +125,6 @@ export const AddProducts = () => {
           <label className="label">{errors.naminOrderQuantityme?.type === "required" && <span className="label-text-alt text-red-500">{errors.minOrderQuantity.message}</span>}</label>
         </div>
         <div className="form-control w-full max-w-xs">
-          
           <input
             type="number"
             placeholder="Available Quantity"
@@ -146,7 +139,6 @@ export const AddProducts = () => {
           <label className="label">{errors.availableQuantity?.type === "required" && <span className="label-text-alt text-red-500">{errors.availableQuantity.message}</span>}</label>
         </div>
         <div className="form-control w-full max-w-xs">
-          
           <input
             type="number"
             placeholder="Price"
@@ -160,7 +152,6 @@ export const AddProducts = () => {
           />
           <label className="label">{errors.price?.type === "required" && <span className="label-text-alt text-red-500">{errors.price.message}</span>}</label>
         </div>
-        
 
         <input className="btn btn-primary w-full max-w-xs text-white" type="submit" value="Add Product" />
       </form>

@@ -2,11 +2,12 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 export const Product = ({ product, fromHome }) => {
-  const { name, image, shortDesc, minOrderQuantity, availableQuantity, price } = product;
+  const { _id, name, image, shortDesc, minOrderQuantity, availableQuantity, price } = product;
+  console.log(product);
   const navigate = useNavigate();
-  const goToPurchase=()=>{
-    navigate("/purchase");
-  }
+    const purchaseItem = id => {
+        navigate(`/purchase/${id}`)
+    }
   return (
     <div className="card max-w-lg bg-neutral shadow-2xl my-16 text-white">
       <figure>
@@ -22,7 +23,6 @@ export const Product = ({ product, fromHome }) => {
         {fromHome !== undefined ?  (
               <>
                 <label
-                  for="booking-modal"
                   //   disabled={tool.length === 0}
                   //   onClick={() => {
                   //     newPath(tool._id);
@@ -40,16 +40,12 @@ export const Product = ({ product, fromHome }) => {
               </>
             ):(
               <>
-                <label
-                  for="booking-modal"
-                  disabled={product.length === 0}
-                  onClick={() => {
-                    goToPurchase(product._id);
-                  }}
+                <button
+                  onClick={() => purchaseItem(_id)}
                   className="btn btn-primary text-white text-center"
                 >
                   Purchase
-                </label>
+                </button>
               </>
             ) }
         </div>
