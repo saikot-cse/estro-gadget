@@ -1,7 +1,5 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
-
-export const Product = ({ product, fromHome }) => {
+export const ManageProduct = ({ product, fromHome }) => {
   const { name, image, shortDesc, minOrderQuantity, availableQuantity, price } = product;
   const navigate = useNavigate();
   const goToPurchase=()=>{
@@ -19,7 +17,20 @@ export const Product = ({ product, fromHome }) => {
         <p>Available Quantity: {availableQuantity}</p>
         <p>Price: ${price}</p>
         <div className="card-actions justify-center">
-        {fromHome !== undefined ?  (
+        {fromHome !== undefined ? (
+              <>
+                <label
+                  for="booking-modal"
+                  disabled={product.length === 0}
+                  onClick={() => {
+                    goToPurchase(product._id);
+                  }}
+                  className="btn btn-primary text-white text-center"
+                >
+                  Purchase
+                </label>
+              </>
+            ) : (
               <>
                 <label
                   for="booking-modal"
@@ -38,20 +49,7 @@ export const Product = ({ product, fromHome }) => {
                   Delete Item
                 </label>
               </>
-            ):(
-              <>
-                <label
-                  for="booking-modal"
-                  disabled={product.length === 0}
-                  onClick={() => {
-                    goToPurchase(product._id);
-                  }}
-                  className="btn btn-primary text-white text-center"
-                >
-                  Purchase
-                </label>
-              </>
-            ) }
+            )}
         </div>
       </div>
     </div>

@@ -18,15 +18,15 @@ export const MakeAdmin = () => {
       <table class="table table-zebra w-full">
         <thead>
           <tr>
-            <th></th>
-            <th>Name</th>
-            <th>Job</th>
-            <th>Favorite Color</th>
+            <th>SL</th>
+            <th>Email</th>
+            <th>Make Admin</th>
+            <th>Delete</th>
           </tr>
         </thead>
         <tbody>
-          {users.map((user) => (
-            <UserRows key={user._id} user={user} refetch={refetch}/>
+          {users.map((user, index) => (
+            <UserRows key={user._id} user={user} refetch={refetch} index={index}/>
           ))}
         </tbody>
       </table>

@@ -24,11 +24,16 @@ export const Navbar = ({ children }) => {
         <NavLink to="/blogs">Blogs</NavLink>
       </li>
       <li>
-        <NavLink to="/about">About</NavLink>
+        <NavLink to="/contact">Contact</NavLink>
       </li>
       {user && (
         <li>
           <NavLink to="/dashboard">Dashboard</NavLink>
+        </li>
+      )}
+      {user && (
+        <li>
+          <NavLink to="/portfolio">Portfolio</NavLink>
         </li>
       )}
       <li>

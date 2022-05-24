@@ -1,7 +1,7 @@
 import React from "react";
 import Swal from "sweetalert2";
 
-export const UserRows = ({user, refetch}) => {
+export const UserRows = ({user, refetch, index}) => {
   const { email, role } = user;
   const makeAdmin = () => {
     fetch(`http://localhost:6060/user/admin/${email}`, {
@@ -33,7 +33,7 @@ export const UserRows = ({user, refetch}) => {
   };
   return (
     <tr>
-      <th>1</th>
+      <th>{index+1}</th>
       <td>{user.email}</td>
       <td>{role !== "admin" && <button onClick={makeAdmin} className="btn btn-sm btn-primary">Make Admin</button>}</td>
       <td><button className="btn btn-sm btn-primary">Remove User</button></td>

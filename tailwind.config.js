@@ -6,6 +6,7 @@ module.exports = {
         login: "url('/src/assets/login.jpg')",
         signup: "url('/src/assets/signup.jpg')",
         join: "url('/src/assets/join.jpg')",
+        about: "url('/src/assets/about.jpg')",
       },
     },
   },

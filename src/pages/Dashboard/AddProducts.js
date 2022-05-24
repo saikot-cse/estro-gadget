@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useQuery } from "react-query";
+import Swal from "sweetalert2";
 import Loading from "../../components/Loading";
 
 export const AddProducts = () => {
@@ -46,10 +47,19 @@ export const AddProducts = () => {
             .then((res) => res.json())
             .then((inserted) => {
               if (inserted.insertedId) {
-                // toast.success('Doctor added successfully')
+                Swal.fire(
+                  'Success!',
+                  'Product Added Successfully!',
+                  'success'
+                )
                 reset();
               } else {
-                // toast.error('Failed to add the doctor');
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: 'Failed to add product!',
+                  footer: '<a href="">Why do I have this issue?</a>'
+                })
               }
             });
         }
@@ -60,13 +70,10 @@ export const AddProducts = () => {
     return <Loading></Loading>;
   }
   return (
-    <div className="mt-80 text-black">
-      <h2 className="text-2xl">Add a New Product</h2>
+    <div className="text-black">
+      <h2 className="text-4xl text-white mb-8 font-extrabold text-center">Add a New Product</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="form-control w-full max-w-xs">
-          <label className="label">
-            <span className="label-text">Name</span>
-          </label>
           <input
             type="text"
             placeholder="Product Name"
@@ -81,12 +88,9 @@ export const AddProducts = () => {
           <label className="label">{errors.name?.type === "required" && <span className="label-text-alt text-red-500">{errors.name.message}</span>}</label>
         </div>
         <div className="form-control w-full max-w-xs">
-          <label className="label">
-            <span className="label-text">Photo</span>
-          </label>
           <input
             type="file"
-            className="input input-bordered w-full max-w-md"
+            className="w-full max-w-xs dark:text-white"
             {...register("image", {
               required: {
                 value: true,
@@ -97,9 +101,7 @@ export const AddProducts = () => {
           <label className="label">{errors.image?.type === "required" && <span className="label-text-alt text-red-500">{errors.image.message}</span>}</label>
         </div>
         <div className="form-control w-full max-w-xs">
-          <label className="label">
-            <span className="label-text">Short Description</span>
-          </label>
+      
           <input
             type="text"
             placeholder="Short Description"
@@ -114,9 +116,7 @@ export const AddProducts = () => {
           <label className="label">{errors.shortDesc?.type === "required" && <span className="label-text-alt text-red-500">{errors.shortDesc.message}</span>}</label>
         </div>
         <div className="form-control w-full max-w-xs">
-          <label className="label">
-            <span className="label-text">Minimum Order Quantity</span>
-          </label>
+          
           <input
             type="number"
             placeholder="Minimum Order Quantity"
@@ -131,9 +131,7 @@ export const AddProducts = () => {
           <label className="label">{errors.naminOrderQuantityme?.type === "required" && <span className="label-text-alt text-red-500">{errors.minOrderQuantity.message}</span>}</label>
         </div>
         <div className="form-control w-full max-w-xs">
-          <label className="label">
-            <span className="label-text">Available Quantity</span>
-          </label>
+          
           <input
             type="number"
             placeholder="Available Quantity"
@@ -148,9 +146,7 @@ export const AddProducts = () => {
           <label className="label">{errors.availableQuantity?.type === "required" && <span className="label-text-alt text-red-500">{errors.availableQuantity.message}</span>}</label>
         </div>
         <div className="form-control w-full max-w-xs">
-          <label className="label">
-            <span className="label-text">Price</span>
-          </label>
+          
           <input
             type="number"
             placeholder="Price"

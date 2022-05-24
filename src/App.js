@@ -32,15 +32,16 @@ function App() {
               <Route key={index} path={path} element={<Component />} />
             ))}
           </Route>
-          <Route element={<RequireAdmin />}>
-            <Route path="/dashboard" element={<Dashboard />}>
+
+          <Route path="/dashboard" element={<Dashboard />}>
+            <Route path="add-review" element={<AddReview />} />
+            <Route path="my-orders" element={<MyOrders />} />
+            <Route path="my-profile" element={<MyProfile />} />
+            <Route element={<RequireAdmin />}>
               <Route path="add-products" element={<AddProducts />} />
               <Route path="add-admin" element={<MakeAdmin />} />
               <Route path="manage-orders" element={<ManageOrders />} />
               <Route path="manage-products" element={<ManageProducts />} />
-              <Route path="add-review" element={<AddReview />} />
-              <Route path="my-orders" element={<MyOrders/>} />
-              <Route path="my-profile" element={<MyProfile />} />
             </Route>
           </Route>
         </Routes>
