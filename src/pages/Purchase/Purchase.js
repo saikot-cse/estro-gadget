@@ -16,7 +16,7 @@ export const Purchase = () => {
             .then((data) => setProductDetail(data));
     }, [productDetail, _id]);
     console.log(productDetail);
-
+   
     const handleSubmit = e => {
         e.preventDefault()
         const quantity = e.target.quantity.value
@@ -39,7 +39,8 @@ export const Purchase = () => {
             phone: e.target.phone.value,
             address: e.target.address.value,
             name: productDetail.name,
-            quantity: e.target.quantity.value
+            quantity: e.target.quantity.value,
+            price: e.target.price.value
 
         }
         fetch('http://localhost:6060/order', {
@@ -58,7 +59,7 @@ export const Purchase = () => {
     }
 
     return (
-        <div className="hero min-h-screen bg-base-200">
+        <div className="hero min-h-screen bg-base-200 mt-16">
             <div className="hero-content flex-col  lg:flex-row-reverse">
                 <div className="card max-w-lg bg-base-100 shadow-xl">
                     <figure>
@@ -107,7 +108,8 @@ export const Purchase = () => {
                                 placeholder="Your Address"
                                 className="input input-bordered my-2 input-success w-full max-w-xs"
                             />
-                            <input type="number" defaultValue={productDetail.minQuantity} className="input input-bordered my-2 input-success w-full max-w-xs" name="quantity" placeholder="Set quantity" />
+                            <input type="number" className="input input-bordered my-2 input-success w-full max-w-xs"  name="quantity" placeholder="Set quantity" />
+                            <input type="number" className="input input-bordered my-2 input-success w-full max-w-xs" name="price" placeholder="price" />
                             <input
                                 type="Submit"
                                 value={"Order"}

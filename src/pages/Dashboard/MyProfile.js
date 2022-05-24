@@ -1,4 +1,5 @@
 import { useAuthState } from "react-firebase-hooks/auth";
+import Swal from "sweetalert2";
 import Loading from "../../components/Loading";
 import auth from "../../firebase.init";
 
@@ -31,6 +32,11 @@ export const MyProfile = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data)
+                Swal.fire(
+                  'Success!',
+                  'Profile Updated Successfully!',
+                  'success'
+                )
                 event.target.reset()
             })
     }
