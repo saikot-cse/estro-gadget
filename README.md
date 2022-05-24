@@ -1,6 +1,6 @@
 # Pro Tech Gear
 
-Live Website Link [Estro Gadget](https://pro-tech-gear.web.app/)
+Live Website Link [Estro Gadget](https://estro-gadget.web.app)
 
 ## About The Project
 Creativity is at the heart of every dream. Every idea, every groundbreaking leap that changes our world starts with the vision of talented creators. At Estro Gadget, we give these creators the tools they need to bring their ideas to life.
