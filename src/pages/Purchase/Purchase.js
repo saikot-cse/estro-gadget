@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 import auth from "../../firebase.init";
 
 
@@ -14,7 +15,7 @@ export const Purchase = () => {
         fetch(`http://localhost:6060/products/${_id}`)
             .then((res) => res.json())
             .then((data) => setProductDetail(data));
-    }, [productDetail, _id]);
+    }, [_id]);
     console.log(productDetail);
    
     const handleSubmit = e => {
@@ -24,13 +25,21 @@ export const Purchase = () => {
         const max = productDetail.availableQuantity
 
         if (quantity < min || quantity > max) {
-            alert('Your Quantity have to be between min and Available Quantity')
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Please enter quantity between minimum to maximum',
+              })
             setReload(!reload)
             setIsDisabled(true)
+            return
         }
         else {
-
-            alert('delivered your order')
+            Swal.fire(
+                'Congratulation!',
+                'Your order has been placed!',
+                'success'
+              )
         }
 
         const orders = {
@@ -108,8 +117,9 @@ export const Purchase = () => {
                                 placeholder="Your Address"
                                 className="input input-bordered my-2 input-success w-full max-w-xs"
                             />
-                            <input type="number" className="input input-bordered my-2 input-success w-full max-w-xs"  name="quantity" placeholder="Set quantity" />
-                            <input type="number" className="input input-bordered my-2 input-success w-full max-w-xs" name="price" placeholder="price" />
+                            <input type="number" className="input input-bordered my-2 input-success w-full max-w-xs"  name="quantity" defaultValue={productDetail.minOrderQuantity}
+                            placeholder="Set quantity" />
+                            <input type="number" className="input input-bordered my-2 input-success w-full max-w-xs" name="price"  placeholder="price" required/>
                             <input
                                 type="Submit"
                                 value={"Order"}

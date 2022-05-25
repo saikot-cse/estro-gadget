@@ -3,7 +3,7 @@ import { useProducts } from "../../hooks/useProducts";
 import { ManageProduct } from "./ManageProduct";
 
 export const ManageProducts = () => {
-  const [products] = useProducts();
+  const [products, setProducts] = useProducts();
   
 
   return (
@@ -16,7 +16,7 @@ export const ManageProducts = () => {
         <p>If you’re buying a drone for the first time, you may want to consider the features, flight time, camera resolution, accessories and easy of use.</p>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-x-5">
           {products.map((product) => (
-            <ManageProduct key={product._id} product={product} />
+            <ManageProduct key={product._id} product={product} products={products} setProducts={setProducts} />
           ))}
         </div>
       </div>
