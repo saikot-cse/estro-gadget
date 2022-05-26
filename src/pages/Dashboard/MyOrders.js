@@ -1,21 +1,27 @@
 import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Link } from "react-router-dom";
 import Loading from "../../components/Loading";
 import auth from "../../firebase.init";
+import { DeleteOrders } from "./DeleteOrders";
+import { SingelOrder } from "./SingelOrder";
 
 export const MyOrders = () => {
-  const [orders, setOrders] = useState([]);
+  const [products, setProducts] = useState([]);
+ 
+
+  const [deleteOrder, setDeleteOrder] = useState(null);
+
+  console.log("delet", deleteOrder);
+
   const [user, loading] = useAuthState(auth);
   const email = user?.email;
-  console.log("gg", email);
 
   useEffect(() => {
-    fetch(`https://afternoon-escarpment-12190.herokuapp.com/order?email=${email}`)
+    fetch(`http://localhost:6060/order?email=${email}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        setOrders(data);
+        setProducts(data);
       });
   }, [email]);
 
@@ -24,59 +30,28 @@ export const MyOrders = () => {
   }
 
   return (
-    <div>
-      <h2 className="text-2xl font-serif font-bold p-4 ">Your Orders:{orders.length}</h2>
-      <div className="overflow-x-auto">
-        <table className="table w-full">
-          <thead>
-            <tr className="text-black">
-              <th>SL</th>
-
-              <th>Product</th>
-              <th>Ordered Quantity</th>
-              <th>Cancel Order</th>
-              <th>Payment</th>
-            </tr>
-          </thead>
-          <tbody className="text-black">
-            {orders.map((order, index) => (
-              <tr key={order._id}>
-                <th>{index + 1}</th>
-                <td>{order.name}</td>
-                <td>{order.quantity}</td>
-                <td>
-                  {!order.paid ? (
-                    <button className="btn text-semibold btn-error btn-xs">Cancel</button>
-                  ) : (
-                    <button disabled className="btn text-semibold btn-success btn-xs">
-                      Cancle
-                    </button>
-                  )}
-                </td>
-                <td>
-                  {order.price && !order.paid ? (
-                    <Link to={`/payment/${order._id}`}>
-                      <button className="btn text-semibold  btn-success  btn-xs">Pay</button>
-                    </Link>
-                  ) : (
-                    order.price &&
-                    order.paid && (
-                      <div>
-                        <p>
-                          <span className="text-success">Paid</span>
-                        </p>
-                        <p>
-                          Transaction id: <span className="text-success">{order.transactionId}</span>
-                        </p>
-                      </div>
-                    )
-                  )}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+    <>
+      {products.length === 0 && <Loading></Loading>}
+      <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
+        {products.map((product) => (
+          <SingelOrder
+            key={product._id}
+            product={product}
+            products={products}
+            setProducts={setProducts}
+            setDeleteOrder={setDeleteOrder}
+          ></SingelOrder>
+        ))}
+        {deleteOrder && (
+          <DeleteOrders
+            deleteOrder={deleteOrder}
+            setDeleteOrder={setDeleteOrder}
+            setProducts={setProducts}
+            products={products}
+          ></DeleteOrders>
+        )}
       </div>
-    </div>
+    </>
+    
   );
 };

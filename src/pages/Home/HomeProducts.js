@@ -1,8 +1,13 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { useProducts } from "../../hooks/useProducts";
 import { Product } from "../Products/Product";
 export const HomeProducts = () => {
   const [products] = useProducts();
+  const navigate = useNavigate();
+  const goToProducts=()=>{
+    navigate("/products");
+  }
 
   return (
     <div className="mt-16 mx-12">
@@ -13,6 +18,7 @@ export const HomeProducts = () => {
           <Product key={product._id} product={product} />
         ))}
       </div>
+      <button onClick={goToProducts} className="btn btn-primary mx-auto block">View All</button>
     </div>
   );
 };

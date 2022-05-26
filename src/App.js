@@ -13,6 +13,8 @@ import { ManageOrders } from "./pages/Dashboard/ManageOrders";
 import { ManageProducts } from "./pages/Dashboard/ManageProducts";
 import { MyOrders } from "./pages/Dashboard/MyOrders";
 import { MyProfile } from "./pages/Dashboard/MyProfile";
+import { UpdateProducts } from "./pages/Dashboard/UpdateProducts";
+
 import { privateRoutes } from "./routes/privateRoutes";
 import { publicRoute } from "./routes/publicRoute";
 
@@ -32,11 +34,14 @@ function App() {
               <Route key={index} path={path} element={<Component />} />
             ))}
           </Route>
-
+          
+          <Route path="update-products/:id" element={<UpdateProducts />} />
+          
           <Route path="/dashboard" element={<Dashboard />}>
             <Route path="add-review" element={<AddReview />} />
             <Route path="my-orders" element={<MyOrders />} />
             <Route path="my-profile" element={<MyProfile />} />
+            
             <Route element={<RequireAdmin />}>
               <Route path="add-products" element={<AddProducts />} />
               <Route path="add-admin" element={<MakeAdmin />} />

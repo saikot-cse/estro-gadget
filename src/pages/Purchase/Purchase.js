@@ -6,6 +6,7 @@ import auth from "../../firebase.init";
 
 export const Purchase = () => {
   const { _id } = useParams();
+  
   const [productDetail, setProductDetail] = useState([]);
   const [reload, setReload] = useState(false);
   const [isDisabled, setIsDisabled] = useState(false);
@@ -16,7 +17,7 @@ export const Purchase = () => {
       .then((data) => setProductDetail(data));
   }, [_id]);
   console.log(productDetail);
-
+  // const [onchange, setOnChange] = useState(productDetail.minOrderQuantity)
   const handleSubmit = (e) => {
     e.preventDefault();
     const quantity = e.target.quantity.value;
@@ -44,6 +45,8 @@ export const Purchase = () => {
       name: productDetail.name,
       quantity: e.target.quantity.value,
       price: e.target.price.value,
+      status: "pending",
+      paid: false
     };
     fetch("https://afternoon-escarpment-12190.herokuapp.com/order", {
       method: "POST",

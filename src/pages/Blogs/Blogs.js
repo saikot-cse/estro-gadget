@@ -12,10 +12,10 @@ export const Blogs = () => {
         <title>Blogs | Estro Gadget</title>
       </Helmet>
       <div>
-        <div class="hero h-[40vh] bg-about bg-fixed mt-16 opacity-90">
-          <div class="hero-content text-center">
-            <div class="max-w-md">
-              <h1 class="text-7xl font-bold text-primary">Our Blogs</h1>
+        <div className="hero h-[40vh] bg-about bg-fixed mt-16 opacity-90">
+          <div className="hero-content text-center">
+            <div className="max-w-md">
+              <h1 className="text-7xl font-bold text-primary">Our Blogs</h1>
             </div>
           </div>
         </div>

@@ -68,13 +68,13 @@ export const MyProfile = () => {
   return (
     <div className="grid grid-cols-1 w-full px-20">
       <h1 className="mt-[45vh] text-4xl text-center font-bold mb-5">My Profile</h1>
-      <div class="mx-auto">
-        <h2 class="card-title">Name : {user?.displayName}</h2>
-        <h2 class="card-title">Email : {user?.email}</h2>
-        <h2 class="card-title">Phone : {newUser[0]?.phone}</h2>
-        <h2 class="card-title">Address : {newUser[0]?.location}</h2>
-        <h2 class="card-title">Education : {newUser[0]?.education}</h2>
-        <h2 class="card-title">Link : {newUser[0]?.link}</h2>
+      <div className="mx-auto">
+        <h2 className="card-title">Name : {user?.displayName}</h2>
+        <h2 className="card-title">Email : {user?.email}</h2>
+        <h2 className="card-title">Phone : {newUser[0]?.phone}</h2>
+        <h2 className="card-title">Address : {newUser[0]?.location}</h2>
+        <h2 className="card-title">Education : {newUser[0]?.education}</h2>
+        <h2 className="card-title">Link : {newUser[0]?.link}</h2>
       </div>
 
       <div className="card  bg-base-100  flex justify-center items-center mt-16">

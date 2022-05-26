@@ -25,15 +25,15 @@ export const Payment = () => {
   console.log(data);
   return (
     <div>
-      <div class="card w-50  max-w-md bg-base-100 shadow-xl my-16 mt-48 mx-auto">
-        <div class="card-body">
+      <div className="card w-50  max-w-md bg-base-100 shadow-xl my-16 mt-48 mx-auto">
+        <div className="card-body">
           <p className="text-success font-bold">Hello, {data?.userName}</p>
-          <h2 class="card-title">Please Pay for: {data?.name}</h2>
+          <h2 className="card-title">Please Pay for: {data?.name}</h2>
           <p>Please pay: ${data?.price}</p>
         </div>
       </div>
-      <div class="card flex-shrink-0 w-50 max-w-md shadow-2xl bg-base-100 mx-auto">
-        <div class="card-body">
+      <div className="card flex-shrink-0 w-50 max-w-md shadow-2xl bg-base-100 mx-auto">
+        <div className="card-body">
           <Elements stripe={stripePromise}>
             <CheckoutForm data={data} />
           </Elements>

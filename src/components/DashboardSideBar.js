@@ -26,7 +26,7 @@ export const DashboardSideBar = ({ children }) => {
               <li className="mb-3">
                 <NavLink to="/dashboard/manage-products">Manage Products</NavLink>
               </li>
-
+              
               <li className="mb-3">
                 <NavLink to="/dashboard/manage-orders">Manage All Orders</NavLink>
               </li>

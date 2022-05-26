@@ -18,8 +18,8 @@ export const MakeAdmin = () => {
     return <Loading />;
   }
   return (
-    <div class="overflow-x-auto text-black">
-      <table class="table table-zebra w-full">
+    <div className="overflow-x-auto text-black">
+      <table className="table table-zebra w-full">
         <thead>
           <tr>
             <th>SL</th>
