@@ -7,7 +7,6 @@ import { SingelOrder } from "./SingelOrder";
 
 export const MyOrders = () => {
   const [products, setProducts] = useState([]);
- 
 
   const [deleteOrder, setDeleteOrder] = useState(null);
 
@@ -17,7 +16,7 @@ export const MyOrders = () => {
   const email = user?.email;
 
   useEffect(() => {
-    fetch(`http://localhost:6060/order?email=${email}`)
+    fetch(`https://afternoon-escarpment-12190.herokuapp.com/order?email=${email}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -34,24 +33,10 @@ export const MyOrders = () => {
       {products.length === 0 && <Loading></Loading>}
       <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
         {products.map((product) => (
-          <SingelOrder
-            key={product._id}
-            product={product}
-            products={products}
-            setProducts={setProducts}
-            setDeleteOrder={setDeleteOrder}
-          ></SingelOrder>
+          <SingelOrder key={product._id} product={product} products={products} setProducts={setProducts} setDeleteOrder={setDeleteOrder}></SingelOrder>
         ))}
-        {deleteOrder && (
-          <DeleteOrders
-            deleteOrder={deleteOrder}
-            setDeleteOrder={setDeleteOrder}
-            setProducts={setProducts}
-            products={products}
-          ></DeleteOrders>
-        )}
+        {deleteOrder && <DeleteOrders deleteOrder={deleteOrder} setDeleteOrder={setDeleteOrder} setProducts={setProducts} products={products}></DeleteOrders>}
       </div>
     </>
-    
   );
 };

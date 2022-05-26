@@ -16,7 +16,7 @@ export const UpdateProducts = () => {
   const [product, setProduct] = useState([]);
   console.log(product);
   useEffect(() => {
-    fetch(`http://localhost:6060/products?id=${id}`)
+    fetch(`https://afternoon-escarpment-12190.herokuapp.com/products?id=${id}`)
       .then((res) => res.json())
       .then((data) => setProduct(data));
   }, []);
@@ -48,7 +48,7 @@ export const UpdateProducts = () => {
             image: image,
           };
 
-          fetch(`http://localhost:6060/products?id=${id}`, {
+          fetch(`https://afternoon-escarpment-12190.herokuapp.com/products?id=${id}`, {
             method: "PUT",
             headers: {
               "content-type": "application/json",
@@ -58,14 +58,10 @@ export const UpdateProducts = () => {
           })
             .then((res) => res.json())
             .then((data) => {
-              fetch(`http://localhost:6060/products?id=${id}`)
+              fetch(`https://afternoon-escarpment-12190.herokuapp.com/products?id=${id}`)
                 .then((res) => res.json())
                 .then((data) => setProduct(data));
-              Swal.fire(
-                'Success!',
-                'Product Updated Successfully!',
-                'success'
-              )
+              Swal.fire("Success!", "Product Updated Successfully!", "success");
               reset();
             });
         }

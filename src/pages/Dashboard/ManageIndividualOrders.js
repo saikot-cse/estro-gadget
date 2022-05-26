@@ -10,7 +10,7 @@ export const ManageIndividualOrders = (props) => {
       status: "Shipped",
     };
     console.log(updatedProduct.quantity);
-    fetch(`http://localhost:6060/order?id=${_id}`, {
+    fetch(`https://afternoon-escarpment-12190.herokuapp.com/order?id=${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -26,15 +26,11 @@ export const ManageIndividualOrders = (props) => {
             console.log(orders[i]);
           }
         }
-        Swal.fire(
-          'Success!',
-          'Panding Status Updated',
-          'success'
-        )
+        Swal.fire("Success!", "Panding Status Updated", "success");
         setOrders(orders);
       });
 
-    fetch(`http://localhost:6060/order`, {
+    fetch(`https://afternoon-escarpment-12190.herokuapp.com/order`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -73,15 +69,15 @@ export const ManageIndividualOrders = (props) => {
               Status: <span className="text-success">{status}</span>
             </h4>
           )}
-          {status === "pending" && paid? 
+          {status === "pending" && paid ? (
             <button onClick={() => changeStatus()} className="btn btn-success text-center">
               Shipped
             </button>
-            :
+          ) : (
             <button disabled onClick={() => changeStatus()} className="btn btn-success text-center">
               Shipped
             </button>
-          }
+          )}
           {!transactionId && (
             <label onClick={() => setDeleteOrder(props.order)} for="my-modal-6" className="btn  btn-error">
               Delete

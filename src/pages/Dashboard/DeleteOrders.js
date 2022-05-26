@@ -5,7 +5,7 @@ export const DeleteOrders = ({ deleteOrder, setDeleteOrder, setProducts, product
   const { _id, name, description, price, quantity } = deleteOrder;
   console.log(deleteOrder);
   const handleDelete = () => {
-    const url = `http://localhost:6060/order/${_id}`;
+    const url = `https://afternoon-escarpment-12190.herokuapp.com/order/${_id}`;
     fetch(url, {
       method: "DELETE",
     })

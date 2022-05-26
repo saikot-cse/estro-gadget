@@ -34,9 +34,7 @@ function App() {
               <Route key={index} path={path} element={<Component />} />
             ))}
           </Route>
-          
           <Route path="update-products/:id" element={<UpdateProducts />} />
-          
           <Route path="/dashboard" element={<Dashboard />}>
             <Route path="add-review" element={<AddReview />} />
             <Route path="my-orders" element={<MyOrders />} />
