@@ -3,7 +3,6 @@ import { useQuery } from "react-query";
 import Swal from "sweetalert2";
 import Loading from "../../components/Loading";
 
-
 export const AddReview = () => {
   const {
     register,
@@ -12,7 +11,7 @@ export const AddReview = () => {
     reset,
   } = useForm();
 
-  const { isLoading } = useQuery("reviews", () => fetch("http://localhost:6060/reviews").then((res) => res.json()));
+  const { isLoading } = useQuery("reviews", () => fetch("https://afternoon-escarpment-12190.herokuapp.com/reviews").then((res) => res.json()));
 
   const imageStorageKey = "f0f0f2bf446f8f55f66f44d630e01993";
   const onSubmit = async (data) => {
@@ -34,7 +33,7 @@ export const AddReview = () => {
             shortDesc: data.shortDesc,
           };
           // send to your database
-          fetch("http://localhost:6060/reviews", {
+          fetch("https://afternoon-escarpment-12190.herokuapp.com/reviews", {
             method: "POST",
             headers: {
               "content-type": "application/json",

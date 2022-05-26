@@ -2,8 +2,12 @@ import { useQuery } from "react-query";
 import Loading from "../../components/Loading";
 import { UserRows } from "./UserRows";
 export const MakeAdmin = () => {
-  const { data: users, isLoading, refetch } = useQuery("users", () =>
-    fetch("http://localhost:6060/user", {
+  const {
+    data: users,
+    isLoading,
+    refetch,
+  } = useQuery("users", () =>
+    fetch("https://afternoon-escarpment-12190.herokuapp.com/user", {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -26,7 +30,7 @@ export const MakeAdmin = () => {
         </thead>
         <tbody>
           {users.map((user, index) => (
-            <UserRows key={user._id} user={user} refetch={refetch} index={index}/>
+            <UserRows key={user._id} user={user} refetch={refetch} index={index} />
           ))}
         </tbody>
       </table>

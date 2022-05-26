@@ -11,7 +11,7 @@ export const ManageProduct = (props) => {
   //   navigate("/purchase");
   // };
   const deleteProduct = () => {
-    const url = `http://localhost:6060/products/${_id}`;
+    const url = `https://afternoon-escarpment-12190.herokuapp.com/products/${_id}`;
     fetch(url, {
       method: "DELETE",
     })

@@ -11,7 +11,7 @@ export const MyOrders = () => {
   console.log("gg", email);
 
   useEffect(() => {
-    fetch(`http://localhost:6060/order?email=${email}`)
+    fetch(`https://afternoon-escarpment-12190.herokuapp.com/order?email=${email}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -40,7 +40,7 @@ export const MyOrders = () => {
           </thead>
           <tbody className="text-black">
             {orders.map((order, index) => (
-            <tr key={order._id}>
+              <tr key={order._id}>
                 <th>{index + 1}</th>
                 <td>{order.name}</td>
                 <td>{order.quantity}</td>

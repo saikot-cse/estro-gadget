@@ -4,7 +4,6 @@
 // import Aos from 'aos';
 // import 'aos/dist/aos.css';
 import React from "react";
-import { Link } from "react-router-dom";
 export const ManageIndividualOrders = ({ order }) => {
   // const { orders, setOrders } = props;
   // // const { name, description, price, totalPrice, quantity, productCode, img, status, _id, paid, email, userName, adress, phone } = props.order;
@@ -20,7 +19,7 @@ export const ManageIndividualOrders = ({ order }) => {
   //         name, description, price, totalPrice, quantity, productCode, img, status: 'Shipped', userName, adress, phone, email, paid, transaction: props?.order?.transaction
   //     }
 
-  //     fetch(`http://localhost:6060/orders?id=${_id}`, {
+  //     fetch(`https://afternoon-escarpment-12190.herokuapp.com/orders?id=${_id}`, {
   //         method: 'PUT',
   //         headers: {
   //             'content-type': 'application/json'
@@ -39,7 +38,7 @@ export const ManageIndividualOrders = ({ order }) => {
   //             setOrders(orders);
   //         })
 
-  //     fetch(`http://localhost:6060/orders`, {
+  //     fetch(`https://afternoon-escarpment-12190.herokuapp.com/orders`, {
   //         method: 'GET',
   //         headers: {
   //             'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -50,7 +49,7 @@ export const ManageIndividualOrders = ({ order }) => {
   // }
 
   // const deleteProduct = () => {
-  //     const url = `http://localhost:6060/orders?id=${_id}`;
+  //     const url = `https://afternoon-escarpment-12190.herokuapp.com/orders?id=${_id}`;
   //     fetch(url, {
   //         method: 'DELETE'
   //     })

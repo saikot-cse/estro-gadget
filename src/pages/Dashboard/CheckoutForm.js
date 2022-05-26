@@ -1,7 +1,7 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import React, { useEffect, useState } from "react";
 
-export const CheckoutForm = ({data}) => {
+export const CheckoutForm = ({ data }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [cardError, setCardError] = useState("");
@@ -12,23 +12,22 @@ export const CheckoutForm = ({data}) => {
 
   const { _id, price, userEmail, userName } = data;
 
-    useEffect(() => {
-        fetch('http://localhost:6060/create-payment-intent', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json',
-                'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-            },
-            body: JSON.stringify({ price })
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data?.clientSecret) {
-                    setClientSecret(data.clientSecret);
-                }
-            });
-
-    }, [price])
+  useEffect(() => {
+    fetch("https://afternoon-escarpment-12190.herokuapp.com/create-payment-intent", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+      body: JSON.stringify({ price }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data?.clientSecret) {
+          setClientSecret(data.clientSecret);
+        }
+      });
+  }, [price]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -70,7 +69,7 @@ export const CheckoutForm = ({data}) => {
         data: _id,
         transactionId: paymentIntent.id,
       };
-      fetch(`http://localhost:6060/order/${_id}`, {
+      fetch(`https://afternoon-escarpment-12190.herokuapp.com/order/${_id}`, {
         method: "PATCH",
         headers: {
           "content-type": "application/json",

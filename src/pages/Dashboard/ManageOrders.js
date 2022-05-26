@@ -11,7 +11,7 @@ export const ManageOrders = () => {
   // const email = user.email;
   // console.log(email);
   useEffect(() => {
-    fetch(`http://localhost:6060/order`)
+    fetch(`https://afternoon-escarpment-12190.herokuapp.com/order`)
       .then((res) => res.json())
       .then((data) => setOrders(data));
   }, []);
