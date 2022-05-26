@@ -9,11 +9,12 @@ Creativity is at the heart of every dream. Every idea, every groundbreaking leap
 
  * User-friendly UI
  * Firebase Authentication 
- * JWT Token based Secure Login/Register
+ * JWT Token based Secure Login/Register and Valid User
  * Fully responsive UI for both PC and Mobile
- * Secured Data with MongoDB
+ * Secured Data with MongoDB and hosted in Heroku
  * Helpful blogs to gather informations
  * Used Axios to access database easier
+ * My portfolio
 
  # Technology Used
   ## Front-End
@@ -25,6 +26,7 @@ Creativity is at the heart of every dream. Every idea, every groundbreaking leap
   * SweetAlert2(Modals)
   * Firebase Authentication
   * React Firebase Hooks
+  * React Query
 
   ## Back-End
 

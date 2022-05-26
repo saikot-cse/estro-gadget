@@ -29,7 +29,7 @@ export const DeleteProducts = ({ deleteProduct, setDeleteProduct, setProducts, p
   return (
     <div>
       <input type="checkbox" id="my-modal-7" className="modal-toggle" />
-      <div className="modal modal-bottom sm:modal-middle">
+      <div className="modal modal-bottom sm:modal-middle ">
         <div className="modal-box text-black">
           <h3 className="font-bold text-lg text-red-500 mb-16">Are you sure you want to delete ?</h3>
           <div className="my-modal-7">

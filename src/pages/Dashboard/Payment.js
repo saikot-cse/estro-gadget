@@ -29,7 +29,7 @@ export const Payment = () => {
         <div className="card-body">
           <p className="text-success font-bold">Hello, {data?.userName}</p>
           <h2 className="card-title">Please Pay for: {data?.name}</h2>
-          <p>Please pay: ${data?.price}</p>
+          <p>Please pay: ${data?.totalPrice}</p>
         </div>
       </div>
       <div className="card flex-shrink-0 w-50 max-w-md shadow-2xl bg-base-100 mx-auto">

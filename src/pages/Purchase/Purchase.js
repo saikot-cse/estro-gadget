@@ -20,10 +20,10 @@ export const Purchase = () => {
   // const [onchange, setOnChange] = useState(productDetail.minOrderQuantity)
   const handleSubmit = (e) => {
     e.preventDefault();
-    const quantity = e.target.quantity.value;
-    const min = productDetail.minOrderQuantity;
-    const max = productDetail.availableQuantity;
-
+    const quantity = parseInt(e.target.quantity.value);
+    const min = parseInt(productDetail.minOrderQuantity);
+    const max = parseInt(productDetail.availableQuantity);
+    const price = parseInt(productDetail.price);
     if (quantity < min || quantity > max) {
       Swal.fire({
         icon: "error",
@@ -44,9 +44,10 @@ export const Purchase = () => {
       address: e.target.address.value,
       name: productDetail.name,
       quantity: e.target.quantity.value,
-      price: e.target.price.value,
+      price: price,
       status: "pending",
-      paid: false
+      paid: false,
+      totalPrice: parseInt(price*quantity)
     };
     fetch("https://afternoon-escarpment-12190.herokuapp.com/order", {
       method: "POST",
@@ -60,6 +61,8 @@ export const Purchase = () => {
         console.log(result);
         e.target.reset();
       });
+      
+      
   };
 
   return (
@@ -89,12 +92,18 @@ export const Purchase = () => {
         <div className="card flex-shrink-0 w-full max-w-md shadow-2xl bg-base-100">
           <div className="card-body">
             <form onSubmit={handleSubmit} className="form-control">
+            <label>Your Name</label>
               <input type="text" name="name" disabled value={user?.displayName || ""} className="input input-bordered my-2 input-success w-full max-w-xs" />
+              <label>Your Email</label>
               <input type="email" name="email" disabled value={user?.email || ""} className="input input-bordered my-2 input-success w-full max-w-xs" />
+              <label>Your Number</label>
               <input type="text" name="phone" required placeholder="Your Number" className="input input-bordered my-2 input-success w-full max-w-xs" />
+              <label>Your Address</label>
               <input type="text" name="address" required placeholder="Your Address" className="input input-bordered my-2 input-success w-full max-w-xs" />
-              <input type="number" className="input input-bordered my-2 input-success w-full max-w-xs" name="quantity" defaultValue={productDetail.minOrderQuantity} placeholder="Set quantity" />
-              <input type="number" className="input input-bordered my-2 input-success w-full max-w-xs" name="price" placeholder="price" required />
+              <label>Set Quantity</label>
+              <input type="number" className="input input-bordered my-2 input-success w-full max-w-xs" name="quantity" defaultValue={productDetail.minOrderQuantity} min={productDetail.minOrderQuantity} max={productDetail.availableQuantity} placeholder="Set quantity" />
+              <label>Per Unit Price</label>
+              <input type="number" defaultValue={productDetail.price} readOnly className="input input-bordered my-2 input-success w-full max-w-xs" name="price" placeholder="price" required />
               <input type="Submit" value={"Order"} disabled={isDisabled} className="btn btn-secondary my-2 w-80 text-white" />
             </form>
           </div>
