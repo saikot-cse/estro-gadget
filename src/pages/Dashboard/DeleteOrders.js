@@ -5,7 +5,7 @@ export const DeleteOrders = ({ deleteOrder, setDeleteOrder, setProducts, product
   const { _id, name, description, price, quantity, totalPrice } = deleteOrder;
   console.log(deleteOrder);
   const handleDelete = () => {
-    const url = `https://afternoon-escarpment-12190.herokuapp.com/order/${_id}`;
+    const url = `https://estro-gadget-server.vercel.app/order/${_id}`;
     fetch(url, {
       method: "DELETE",
     })

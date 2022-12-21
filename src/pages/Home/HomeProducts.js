@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import Loading from "../../components/Loading";
 import { useProducts } from "../../hooks/useProducts";
 import { Product } from "../Products/Product";
 export const HomeProducts = () => {
@@ -8,7 +9,9 @@ export const HomeProducts = () => {
   const goToProducts=()=>{
     navigate("/products");
   }
-
+ if (!products){
+  return <Loading />
+ }
   return (
     <div className="mt-16 mx-12">
       <h1 className="text-4xl font-extrabold text-center">Get Your Drone</h1>

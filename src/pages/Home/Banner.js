@@ -1,7 +1,7 @@
 import banner from "../../assets/Banner-Images/banner.png";
 export const Banner = () => {
   return (
-    <div className="hero lg:h-[80vh] bg-secondary text-white">
+    <div className="hero lg:h-[80vh] bg-secondary text-white relative">
       <div className="hero-content flex-col lg:flex-row">
         <div data-aos="fade-right">
           <h1 className="text-5xl lg:text-6xl font-bold" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="200">

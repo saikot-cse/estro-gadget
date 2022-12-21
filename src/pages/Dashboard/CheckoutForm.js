@@ -13,7 +13,7 @@ export const CheckoutForm = ({ data }) => {
   const { _id, price, userEmail, userName } = data;
 
   useEffect(() => {
-    fetch("https://afternoon-escarpment-12190.herokuapp.com/create-payment-intent", {
+    fetch("https://estro-gadget-server.vercel.app/create-payment-intent", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -69,7 +69,7 @@ export const CheckoutForm = ({ data }) => {
         data: _id,
         transactionId: paymentIntent.id,
       };
-      fetch(`https://afternoon-escarpment-12190.herokuapp.com/order/${_id}`, {
+      fetch(`https://estro-gadget-server.vercel.app/order/${_id}`, {
         method: "PATCH",
         headers: {
           "content-type": "application/json",

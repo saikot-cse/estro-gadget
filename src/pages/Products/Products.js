@@ -1,11 +1,14 @@
 import Helmet from "react-helmet";
 import { Footer } from "../../components/Footer";
+import Loading from "../../components/Loading";
 import { useProducts } from "../../hooks/useProducts";
 import { Product } from "./Product";
 
 export const Products = () => {
   const [products] = useProducts();
-
+  if (!products){
+    return <Loading />
+   }
   return (
     <>
       <Helmet>

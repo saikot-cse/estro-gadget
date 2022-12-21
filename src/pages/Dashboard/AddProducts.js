@@ -11,7 +11,7 @@ export const AddProducts = () => {
     reset,
   } = useForm();
 
-  const { isLoading } = useQuery("products", () => fetch("https://afternoon-escarpment-12190.herokuapp.com/products").then((res) => res.json()));
+  const { isLoading } = useQuery("products", () => fetch("https://estro-gadget-server.vercel.app/products").then((res) => res.json()));
 
   const imageStorageKey = "f0f0f2bf446f8f55f66f44d630e01993";
   const onSubmit = async (data) => {
@@ -36,7 +36,7 @@ export const AddProducts = () => {
             price: data.price,
           };
           // send to your database
-          fetch("https://afternoon-escarpment-12190.herokuapp.com/product", {
+          fetch("https://estro-gadget-server.vercel.app/product", {
             method: "POST",
             headers: {
               "content-type": "application/json",

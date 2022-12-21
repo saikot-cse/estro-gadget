@@ -8,7 +8,7 @@ export const MyProfile = () => {
   const [user, loading] = useAuthState(auth);
   const [newUser, setNewUser] = useState([]);
   useEffect(() => {
-    fetch(`https://afternoon-escarpment-12190.herokuapp.com/user?email=${user?.email}`, {
+    fetch(`https://estro-gadget-server.vercel.app/user?email=${user?.email}`, {
       method: "GET",
       headers: {
         "content-type": "application/json",
@@ -37,7 +37,7 @@ export const MyProfile = () => {
       link: event.target.link.value,
     };
 
-    fetch(`https://afternoon-escarpment-12190.herokuapp.com/user/${profile?.email}`, {
+    fetch(`https://estro-gadget-server.vercel.app/user/${profile?.email}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -50,7 +50,7 @@ export const MyProfile = () => {
         console.log(data);
         Swal.fire("Success!", "Profile Updated Successfully!", "success");
 
-        fetch(`https://afternoon-escarpment-12190.herokuapp.com/user?email=${user?.email}`, {
+        fetch(`https://estro-gadget-server.vercel.app/user?email=${user?.email}`, {
           method: "GET",
           headers: {
             "content-type": "application/json",

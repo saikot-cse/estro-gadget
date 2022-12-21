@@ -8,7 +8,7 @@ import { CheckoutForm } from "./CheckoutForm";
 const stripePromise = loadStripe("pk_test_51L34oeHJBf3paXtlNkHiZ9FyiMcs6byphpxforezUtImsqAYdsZ8QHrv0YegnSm57tW9olhLvSzHaO6lfTcBnkXr005yGXYg7c");
 export const Payment = () => {
   const { id } = useParams();
-  const url = `https://afternoon-escarpment-12190.herokuapp.com/order/${id}`;
+  const url = `https://estro-gadget-server.vercel.app/order/${id}`;
 
   const { data, isLoading } = useQuery(["products", id], () =>
     fetch(url, {

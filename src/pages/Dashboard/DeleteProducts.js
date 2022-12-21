@@ -2,11 +2,11 @@ import React from "react";
 import Swal from "sweetalert2";
 
 export const DeleteProducts = ({ deleteProduct, setDeleteProduct, setProducts, products }) => {
-  console.log("delet product",deleteProduct);
+  console.log("delet product", deleteProduct);
   const { _id } = deleteProduct;
 
   const handleDelete = () => {
-    const url = `https://afternoon-escarpment-12190.herokuapp.com/products/${_id}`;
+    const url = `https://estro-gadget-server.vercel.app/products/${_id}`;
     fetch(url, {
       method: "DELETE",
     })
@@ -15,11 +15,7 @@ export const DeleteProducts = ({ deleteProduct, setDeleteProduct, setProducts, p
         console.log(data);
         if (data.deletedCount > 0) {
           const remaining = products.filter((item) => item._id !== _id);
-          Swal.fire(
-            'Success!',
-            'Product Deleted Successfully!',
-            'success'
-          )
+          Swal.fire("Success!", "Product Deleted Successfully!", "success");
 
           setProducts(remaining);
           setDeleteProduct(null);

@@ -11,7 +11,7 @@ export const AddReview = () => {
     reset,
   } = useForm();
 
-  const { isLoading } = useQuery("reviews", () => fetch("https://afternoon-escarpment-12190.herokuapp.com/reviews").then((res) => res.json()));
+  const { isLoading } = useQuery("reviews", () => fetch("https://estro-gadget-server.vercel.app/reviews").then((res) => res.json()));
 
   const imageStorageKey = "f0f0f2bf446f8f55f66f44d630e01993";
   const onSubmit = async (data) => {
@@ -33,7 +33,7 @@ export const AddReview = () => {
             shortDesc: data.shortDesc,
           };
           // send to your database
-          fetch("https://afternoon-escarpment-12190.herokuapp.com/reviews", {
+          fetch("https://estro-gadget-server.vercel.app/reviews", {
             method: "POST",
             headers: {
               "content-type": "application/json",

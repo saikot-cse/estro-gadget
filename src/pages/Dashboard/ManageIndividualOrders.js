@@ -10,7 +10,7 @@ export const ManageIndividualOrders = (props) => {
       status: "Shipped",
     };
     console.log(updatedProduct.quantity);
-    fetch(`https://afternoon-escarpment-12190.herokuapp.com/order?id=${_id}`, {
+    fetch(`https://estro-gadget-server.vercel.app/order?id=${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -30,7 +30,7 @@ export const ManageIndividualOrders = (props) => {
         setOrders(orders);
       });
 
-    fetch(`https://afternoon-escarpment-12190.herokuapp.com/order`, {
+    fetch(`https://estro-gadget-server.vercel.app/order`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

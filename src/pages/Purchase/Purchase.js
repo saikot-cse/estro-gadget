@@ -6,13 +6,13 @@ import auth from "../../firebase.init";
 
 export const Purchase = () => {
   const { _id } = useParams();
-  
+
   const [productDetail, setProductDetail] = useState([]);
   const [reload, setReload] = useState(false);
   const [isDisabled, setIsDisabled] = useState(false);
   const [user] = useAuthState(auth);
   useEffect(() => {
-    fetch(`https://afternoon-escarpment-12190.herokuapp.com/products/${_id}`)
+    fetch(`https://estro-gadget-server.vercel.app/products/${_id}`)
       .then((res) => res.json())
       .then((data) => setProductDetail(data));
   }, [_id]);
@@ -47,9 +47,9 @@ export const Purchase = () => {
       price: price,
       status: "pending",
       paid: false,
-      totalPrice: parseInt(price*quantity)
+      totalPrice: parseInt(price * quantity),
     };
-    fetch("https://afternoon-escarpment-12190.herokuapp.com/order", {
+    fetch("https://estro-gadget-server.vercel.app/order", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -61,8 +61,6 @@ export const Purchase = () => {
         console.log(result);
         e.target.reset();
       });
-      
-      
   };
 
   return (
@@ -92,7 +90,7 @@ export const Purchase = () => {
         <div className="card flex-shrink-0 w-full max-w-md shadow-2xl bg-base-100">
           <div className="card-body">
             <form onSubmit={handleSubmit} className="form-control">
-            <label>Your Name</label>
+              <label>Your Name</label>
               <input type="text" name="name" disabled value={user?.displayName || ""} className="input input-bordered my-2 input-success w-full max-w-xs" />
               <label>Your Email</label>
               <input type="email" name="email" disabled value={user?.email || ""} className="input input-bordered my-2 input-success w-full max-w-xs" />

@@ -3,7 +3,7 @@ import Swal from "sweetalert2";
 
 export const UserRows = ({ user, refetch, index }) => {
   const handleDelete = () => {
-    fetch(`https://afternoon-escarpment-12190.herokuapp.com/user/${email}`, {
+    fetch(`https://estro-gadget-server.vercel.app/user/${email}`, {
       method: "DELETE",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -21,7 +21,7 @@ export const UserRows = ({ user, refetch, index }) => {
   };
   const { email, role } = user;
   const makeAdmin = () => {
-    fetch(`https://afternoon-escarpment-12190.herokuapp.com/user/admin/${email}`, {
+    fetch(`https://estro-gadget-server.vercel.app/user/admin/${email}`, {
       method: "PUT",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
